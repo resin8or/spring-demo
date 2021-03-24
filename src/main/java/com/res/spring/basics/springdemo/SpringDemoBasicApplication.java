@@ -1,11 +1,12 @@
 package com.res.spring.basics.springdemo;
 
+import com.res.spring.basics.springdemo.basic.BinarySearchImpl;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 
 @SpringBootApplication
-public class SpringDemoApplication {
+public class SpringDemoBasicApplication {
 
 	// Key Q's that the Spring framework needs to know....
 	// what are the beans? Used @Component
@@ -16,7 +17,7 @@ public class SpringDemoApplication {
 		//BinarySearchImpl binarySearch = new BinarySearchImpl(new QuickSortAlgorithm());
 
 		ApplicationContext appContext =
-				SpringApplication.run(SpringDemoApplication.class, args);
+				SpringApplication.run(SpringDemoBasicApplication.class, args);
 
 		BinarySearchImpl binarySearch = appContext.getBean(BinarySearchImpl.class);
 
