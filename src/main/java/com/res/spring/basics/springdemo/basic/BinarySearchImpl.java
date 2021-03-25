@@ -8,14 +8,14 @@ import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
-import javax.annotation.PostConstruct;
-import javax.annotation.PreDestroy;
+//import javax.annotation.PostConstruct;
+//import javax.annotation.PreDestroy;
 
 @Component
 @Scope(ConfigurableBeanFactory.SCOPE_SINGLETON)
 public class BinarySearchImpl{
 
-    private Logger logger = LoggerFactory.getLogger(BinarySearchImpl.class);
+   private Logger logger = LoggerFactory.getLogger(BinarySearchImpl.class);
 //    @Autowired
 //    private SortAlgorithm sortAlgorithm; // BImpl depends on SortAlgorithm
 
@@ -33,21 +33,22 @@ public class BinarySearchImpl{
         // sorting an array
         int[] sortedNumbers = bubbleSortAlgorithm.sort(numbers);
         System.out.println("Algorithm: " + bubbleSortAlgorithm);
+        logger.info("testing .....");
         return 3;
 
         // search the array
     }
 
-    @PostConstruct
-    public void postConstruct(){
-        // Once bean created and initialised with dependencies this method will be called.
-        logger.info("PostConstruct firing ... ");
-    }
-
-    @PreDestroy
-    public void preDestroy(){
-        // This is called just before the bean is removed from ctx.
-        logger.info("PreDestroy firing ... ");
-    }
+//    @PostConstruct
+//    public void postConstruct(){
+//        // Once bean created and initialised with dependencies this method will be called.
+//        logger.info("PostConstruct firing ... ");
+//    }
+//
+//    @PreDestroy
+//    public void preDestroy(){
+//        // This is called just before the bean is removed from ctx.
+//        logger.info("PreDestroy firing ... ");
+//    }
 
 }
