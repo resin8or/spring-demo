@@ -18,16 +18,18 @@ public class SpringDemoBasicApplication {
 	public static void main(String[] args) {
 		//BinarySearchImpl binarySearch = new BinarySearchImpl(new QuickSortAlgorithm());
 
-		ApplicationContext appContext =
-				new AnnotationConfigApplicationContext(SpringDemoBasicApplication.class);
+		try (AnnotationConfigApplicationContext appContext =
+					new AnnotationConfigApplicationContext(SpringDemoBasicApplication.class))
+		{
+			BinarySearchImpl binarySearch = appContext.getBean(BinarySearchImpl.class);
 
-		BinarySearchImpl binarySearch = appContext.getBean(BinarySearchImpl.class);
+			// Spring Application Context will manage and provide access to all beans.
+			int result = binarySearch.binarySearch(new int[]{2, 6, 3, 4}, 3);
 
-		// Spring Application Context will manage and provide access to all beans.
-		int result = binarySearch.binarySearch(new int[] {2, 6, 3, 4},3);
-
-		System.out.println("Result is " + result);
-
+			System.out.println("Result is " + result);
+			//AppCtx will be automatically closed with the new try construct in Java 7 +
+			//This implements the autoclosable interface.
+		}
 	}
 
 }
